@@ -1,63 +1,46 @@
 import { autor } from "../models/Autor.js";
+import NotFoundError from "../errors/NotFoundError.js";
 
 class AutorController {
-  static async listarAutores(req, res) {
-    try {
-      const listaAutores = await autor.find({});
-      res.status(200).json(listaAutores);
-    } catch (error) {
-      res
-        .status(500)
-        .json({ message: "Erro ao listar autores", error: error.message });
-    }
+  static async listarAutores(req, res, next) {
+    const listaAutores = await autor.find({});
+    res.status(200).json(listaAutores);
   }
 
-  static async listarAutorPorId(req, res) {
-    try {
-      const id = req.params.id;
-      const autorEncontrado = await autor.findById(id);
+  static async listarAutorPorId(req, res, next) {
+    const id = req.params.id;
+    const autorEncontrado = await autor.findById(id);
+    if (autorEncontrado) {
       res.status(200).json(autorEncontrado);
-    } catch (error) {
-      res
-        .status(500)
-        .json({ message: "Erro ao listar autores", error: error.message });
+    } else {
+      next(new NotFoundError("Autor não encontrado."));
     }
   }
 
-  static async cadastrarAutor(req, res) {
-    try {
-      const novoAutor = await autor.create(req.body);
-      res
-        .status(201)
-        .json({ message: "Autor cadastrado com sucesso", autor: novoAutor });
-    } catch (error) {
-      res
-        .status(500)
-        .json({ message: "Erro ao cadastrar autor", error: error.message });
-    }
+  static async cadastrarAutor(req, res, next) {
+    const novoAutor = await autor.create(req.body);
+    res
+      .status(201)
+      .json({ message: "Autor cadastrado com sucesso", autor: novoAutor });
   }
 
-  static async atualizarAutor(req, res) {
-    try {
-      const id = req.params.id;
-      await autor.findByIdAndUpdate(id, req.body);
+  static async atualizarAutor(req, res, next) {
+    const id = req.params.id;
+    const autorAtualizado = await autor.findByIdAndUpdate(id, req.body);
+    if (autorAtualizado) {
       res.status(200).json({ message: "Autor atualizado com sucesso" });
-    } catch (error) {
-      res
-        .status(500)
-        .json({ message: "Erro ao atualizar autor", error: error.message });
+    } else {
+      next(new NotFoundError("Autor não encontrado."));
     }
   }
 
-  static async deletarAutor(req, res) {
-    try {
-      const id = req.params.id;
-      await autor.findByIdAndDelete(id);
+  static async deletarAutor(req, res, next) {
+    const id = req.params.id;
+    const autorDeletado = await autor.findByIdAndDelete(id);
+    if (autorDeletado) {
       res.status(200).json({ message: "Autor deletado com sucesso" });
-    } catch (error) {
-      res
-        .status(500)
-        .json({ message: "Erro ao deletar autor", error: error.message });
+    } else {
+      next(new NotFoundError("Autor não encontrado."));
     }
   }
 }
