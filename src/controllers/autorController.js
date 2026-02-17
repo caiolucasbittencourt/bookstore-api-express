@@ -2,7 +2,7 @@ import { autor } from "../models/Autor.js";
 import NotFoundError from "../errors/NotFoundError.js";
 
 class AutorController {
-  static async listarAutores(req, res, next) {
+  static async listarAutores(req, res,) {
     const listaAutores = await autor.find({});
     res.status(200).json(listaAutores);
   }
@@ -17,7 +17,7 @@ class AutorController {
     }
   }
 
-  static async cadastrarAutor(req, res, next) {
+  static async cadastrarAutor(req, res) {
     const novoAutor = await autor.create(req.body);
     res
       .status(201)
