@@ -2,6 +2,7 @@ import { autor } from "../models/Autor.js";
 import NotFoundError from "../errors/NotFoundError.js";
 
 class AutorController {
+  // eslint-disable-next-line no-unused-vars
   static async listarAutores(req, res, next) {
     const listaAutores = await autor.find({});
     res.status(200).json(listaAutores);
@@ -17,6 +18,7 @@ class AutorController {
     }
   }
 
+  // eslint-disable-next-line no-unused-vars
   static async cadastrarAutor(req, res, next) {
     const novoAutor = await autor.create(req.body);
     res

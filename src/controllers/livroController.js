@@ -3,6 +3,7 @@ import { autor } from "../models/Autor.js";
 import NotFoundError from "../errors/NotFoundError.js";
 
 class LivroController {
+  // eslint-disable-next-line no-unused-vars
   static async listarLivros(req, res, next) {
     const listaLivros = await livro.find({});
     res.status(200).json(listaLivros);
