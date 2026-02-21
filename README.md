@@ -29,7 +29,7 @@ Uma API REST construída com Node.js, Express e Mongoose. Este projeto serve com
 ### Instalação
 
 ```bash
-git clone https://github.com/seu-usuario/bookstore-api-nodejs.git
+git clone https://github.com/caiolucasbittencourt/bookstore-api-nodejs.git
 cd bookstore-api-nodejs
 npm install
 npm run dev
