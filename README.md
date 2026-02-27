@@ -33,3 +33,47 @@ git clone https://github.com/caiolucasbittencourt/bookstore-api-express.git
 cd bookstore-api-nodejs
 npm install
 npm run dev
+```
+
+### Rotas
+
+#### Base
+
+| Método | Rota | Descrição                  |
+| ------ | ---- | -------------------------- |
+| GET    | `/`  | Retorna informações da API |
+
+**Exemplo de resposta:**
+
+```json
+{
+  "name": "Bookstore API",
+  "version": "1.0.0",
+  "description": "API REST para gerenciamento de livros e autores",
+  "endpoints": {
+    "livros": "/livros",
+    "autores": "/autores"
+  },
+  "documentation": "https://github.com/caiolucasbittencourt/bookstore-api-express"
+}
+```
+
+#### Livros
+
+| Método | Rota          | Descrição                   |
+| ------ | ------------- | --------------------------- |
+| GET    | `/livros`     | Lista todos os livros       |
+| GET    | `/livros/:id` | Busca um livro por ID       |
+| POST   | `/livros`     | Cadastra um novo livro      |
+| PUT    | `/livros/:id` | Atualiza um livro existente |
+| DELETE | `/livros/:id` | Remove um livro             |
+
+#### Autores
+
+| Método | Rota           | Descrição                   |
+| ------ | -------------- | --------------------------- |
+| GET    | `/autores`     | Lista todos os autores      |
+| GET    | `/autores/:id` | Busca um autor por ID       |
+| POST   | `/autores`     | Cadastra um novo autor      |
+| PUT    | `/autores/:id` | Atualiza um autor existente |
+| DELETE | `/autores/:id` | Remove um autor             |
