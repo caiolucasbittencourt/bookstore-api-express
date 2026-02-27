@@ -7,12 +7,10 @@ import manipuladorDeErros from "./middlewares/manipuladorDeErros.js";
 const conexao = await conectaBanco();
 
 conexao.on("error", (erro) =>
-  console.log("Erro de conexão com o banco de dados: " + erro),
+  console.error(`❌ MongoDB connection error: ${erro}`),
 );
 
-conexao.once("open", () =>
-  console.log("Conexão com o banco de dados estabelecida com sucesso"),
-);
+conexao.once("open", () => console.log("✅ MongoDB connected"));
 
 const app = express();
 routes(app);
