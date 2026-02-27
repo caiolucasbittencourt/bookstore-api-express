@@ -4,6 +4,7 @@
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![Jest](https://img.shields.io/badge/jest-%23C21325.svg?style=for-the-badge&logo=jest&logoColor=white)
 
 Uma API REST construída com Node.js, Express e Mongoose. Este projeto serve como back-end para um sistema de livraria, permitindo o gerenciamento de livros e autores.
 
@@ -14,6 +15,7 @@ Uma API REST construída com Node.js, Express e Mongoose. Este projeto serve com
 - **Mongoose** (ODM para modelagem de dados com o MongoDB)
 - **MongoDB** (Banco de dados NoSQL)
 - **Docker** (Containerização)
+- **Jest** (Framework de testes)
 - **ESLint** (Linting de código)
 - **Prettier** (Formatação de código)
 
@@ -73,16 +75,19 @@ npm run docker:build   # Rebuild da imagem
 
 ### Scripts
 
-| Script                 | Descrição                                  |
-| ---------------------- | ------------------------------------------ |
-| `npm run dev`          | Inicia o servidor com hot-reload (nodemon) |
-| `npm start`            | Inicia o servidor em produção              |
-| `npm run lint`         | Executa o ESLint                           |
-| `npm run lint:fix`     | Corrige erros do ESLint automaticamente    |
-| `npm run format`       | Formata o código com Prettier              |
-| `npm run format:check` | Verifica formatação sem alterar            |
-| `npm run docker:up`    | Sobe os containers Docker                  |
-| `npm run docker:down`  | Para os containers Docker                  |
+| Script                  | Descrição                                  |
+| ----------------------- | ------------------------------------------ |
+| `npm run dev`           | Inicia o servidor com hot-reload (nodemon) |
+| `npm start`             | Inicia o servidor em produção              |
+| `npm test`              | Executa os testes                          |
+| `npm run test:watch`    | Executa testes em modo watch               |
+| `npm run test:coverage` | Executa testes com relatório de cobertura  |
+| `npm run lint`          | Executa o ESLint                           |
+| `npm run lint:fix`      | Corrige erros do ESLint automaticamente    |
+| `npm run format`        | Formata o código com Prettier              |
+| `npm run format:check`  | Verifica formatação sem alterar            |
+| `npm run docker:up`     | Sobe os containers Docker                  |
+| `npm run docker:down`   | Para os containers Docker                  |
 
 ### Rotas
 
