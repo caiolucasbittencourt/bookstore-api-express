@@ -1,7 +1,7 @@
 {
   "name": "bookstore-api-nodejs",
   "version": "1.0.0",
-  "description": "A REST API built with Node.js and Express.js",
+  "description": "API de livraria com Node.js e Express.js",
   "license": "ISC",
   "author": "Caio Lucas Bittencourt",
   "type": "module",
@@ -9,7 +9,11 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "format": "prettier --write \"src/**/*.js\"",
+    "format:check": "prettier --check \"src/**/*.js\""
   },
   "dependencies": {
     "dotenv": "^17.3.1",
@@ -21,6 +25,7 @@
     "@eslint/js": "^10.0.1",
     "eslint": "^10.0.0",
     "globals": "^17.3.0",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "prettier": "^3.8.1"
   }
 }
