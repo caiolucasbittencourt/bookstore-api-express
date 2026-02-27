@@ -1,0 +1,44 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bookstore-api
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+    networks:
+      - bookstore-network
+
+  # MongoDB local (opcional - use se preferir não usar Atlas)
+  # Para usar: mude DB_CONNECTION_STRING no .env para mongodb://mongo:27017/bookstore
+  # e descomente depends_on na api acima
+  mongo:
+    image: mongo:7
+    container_name: bookstore-mongo
+    restart: unless-stopped
+    profiles:
+      - local-db
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - bookstore-network
+
+networks:
+  bookstore-network:
+    driver: bridge
+
+volumes:
+  mongo-data:

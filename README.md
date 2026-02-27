@@ -3,16 +3,19 @@
 ![NodeJS](https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
 Uma API REST construída com Node.js, Express e Mongoose. Este projeto serve como back-end para um sistema de livraria, permitindo o gerenciamento de livros e autores.
 
 ## Tecnologias
 
-- **Node.js** (Ambiente de execução JavaScript)
+- **Node.js 22** (Ambiente de execução JavaScript)
 - **Express** (Framework para construção de APIs)
 - **Mongoose** (ODM para modelagem de dados com o MongoDB)
 - **MongoDB** (Banco de dados NoSQL)
-- **Dotenv** (Gerenciamento de variáveis de ambiente)
+- **Docker** (Containerização)
+- **ESLint** (Linting de código)
+- **Prettier** (Formatação de código)
 
 ### Funcionalidades
 
@@ -23,17 +26,63 @@ Uma API REST construída com Node.js, Express e Mongoose. Este projeto serve com
 
 ### Pré-requisitos
 
-- Node.js
-- MongoDB
+- Node.js 22+ (ou use o arquivo `.nvmrc`)
+- MongoDB (local ou Atlas)
+- Docker (opcional)
 
 ### Instalação
 
 ```bash
 git clone https://github.com/caiolucasbittencourt/bookstore-api-express.git
-cd bookstore-api-nodejs
+cd bookstore-api-express
 npm install
+```
+
+### Configuração
+
+Crie um arquivo `.env` na raiz do projeto baseado no `.env.example`:
+
+```bash
+cp .env.example .env
+```
+
+Configure a variável `DB_CONNECTION_STRING` com sua string de conexão do MongoDB.
+
+### Executando
+
+#### Desenvolvimento (local)
+
+```bash
 npm run dev
 ```
+
+#### Produção
+
+```bash
+npm start
+```
+
+#### Docker
+
+```bash
+npm run docker:up      # Inicia os containers
+npm run docker:down    # Para os containers
+npm run docker:logs    # Visualiza logs da API
+npm run docker:build   # Rebuild da imagem
+```
+
+### Scripts
+
+| Script                 | Descrição                                  |
+| ---------------------- | ------------------------------------------ |
+| `npm run dev`          | Inicia o servidor com hot-reload (nodemon) |
+| `npm start`            | Inicia o servidor em produção              |
+| `npm run lint`         | Executa o ESLint                           |
+| `npm run lint:fix`     | Corrige erros do ESLint automaticamente    |
+| `npm run format`       | Formata o código com Prettier              |
+| `npm run format:check` | Verifica formatação sem alterar            |
+| `npm run docker:up`    | Sobe os containers Docker                  |
+| `npm run docker:down`  | Para os containers Docker                  |
 
 ### Rotas
 

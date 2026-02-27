@@ -13,7 +13,11 @@
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
     "format": "prettier --write \"src/**/*.js\"",
-    "format:check": "prettier --check \"src/**/*.js\""
+    "format:check": "prettier --check \"src/**/*.js\"",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f api",
+    "docker:build": "docker compose build --no-cache"
   },
   "dependencies": {
     "dotenv": "^17.3.1",
