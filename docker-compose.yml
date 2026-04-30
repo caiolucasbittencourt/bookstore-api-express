@@ -11,12 +11,15 @@ services:
       - .env
     environment:
       - NODE_ENV=production
+    depends_on:
+      mongo:
+        condition: service_healthy
     networks:
       - bookstore-network
 
   # MongoDB local (opcional - use se preferir não usar Atlas)
   # Para usar: mude DB_CONNECTION_STRING no .env para mongodb://mongo:27017/bookstore
-  # e descomente depends_on na api acima
+  # e rode: npm run docker:up:local (a api ja aguarda o healthcheck do mongo)
   mongo:
     image: mongo:7
     container_name: bookstore-mongo
