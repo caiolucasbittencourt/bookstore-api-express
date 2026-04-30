@@ -1,4 +1,4 @@
-# Bookstore API Express
+# Catálogo de Livraria
 
 ![NodeJS](https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
@@ -35,8 +35,8 @@ Uma API REST construída com Node.js, Express e Mongoose. Este projeto serve com
 ### Instalação
 
 ```bash
-git clone https://github.com/caiolucasbittencourt/bookstore-api-express.git
-cd bookstore-api-express
+git clone https://github.com/caiolucasbittencourt/catalogo-de-livraria.git
+cd catalogo-de-livraria
 npm install
 ```
 
@@ -74,7 +74,7 @@ npm run docker:logs      # Visualiza logs da API
 npm run docker:build     # Rebuild da imagem
 ```
 
-Para usar o MongoDB local, configure `DB_CONNECTION_STRING=mongodb://mongo:27017/bookstore` no `.env`.
+Para usar o MongoDB local, configure `DB_CONNECTION_STRING=mongodb://mongo:27017/catalogo-de-livraria` no `.env`.
 
 ### Scripts
 
@@ -105,14 +105,14 @@ Para usar o MongoDB local, configure `DB_CONNECTION_STRING=mongodb://mongo:27017
 
 ```json
 {
-  "name": "Bookstore API",
+  "name": "Catálogo de Livraria",
   "version": "1.0.0",
   "description": "API REST para gerenciamento de livros e autores",
   "endpoints": {
     "livros": "/livros",
     "autores": "/autores"
   },
-  "documentation": "https://github.com/caiolucasbittencourt/bookstore-api-express"
+  "documentation": "https://github.com/caiolucasbittencourt/catalogo-de-livraria"
 }
 ```
 
