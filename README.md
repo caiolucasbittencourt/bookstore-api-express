@@ -67,27 +67,31 @@ npm start
 #### Docker
 
 ```bash
-npm run docker:up      # Inicia os containers
-npm run docker:down    # Para os containers
-npm run docker:logs    # Visualiza logs da API
-npm run docker:build   # Rebuild da imagem
+npm run docker:up        # Inicia a API (Mongo via Atlas/.env)
+npm run docker:up:local  # Inicia API + Mongo local (profile local-db)
+npm run docker:down      # Para os containers
+npm run docker:logs      # Visualiza logs da API
+npm run docker:build     # Rebuild da imagem
 ```
+
+Para usar o MongoDB local, configure `DB_CONNECTION_STRING=mongodb://mongo:27017/bookstore` no `.env`.
 
 ### Scripts
 
-| Script                  | Descrição                                  |
-| ----------------------- | ------------------------------------------ |
-| `npm run dev`           | Inicia o servidor com hot-reload (nodemon) |
-| `npm start`             | Inicia o servidor em produção              |
-| `npm test`              | Executa os testes                          |
-| `npm run test:watch`    | Executa testes em modo watch               |
-| `npm run test:coverage` | Executa testes com relatório de cobertura  |
-| `npm run lint`          | Executa o ESLint                           |
-| `npm run lint:fix`      | Corrige erros do ESLint automaticamente    |
-| `npm run format`        | Formata o código com Prettier              |
-| `npm run format:check`  | Verifica formatação sem alterar            |
-| `npm run docker:up`     | Sobe os containers Docker                  |
-| `npm run docker:down`   | Para os containers Docker                  |
+| Script                    | Descrição                                   |
+| ------------------------- | ------------------------------------------- |
+| `npm run dev`             | Inicia o servidor com hot-reload (nodemon)  |
+| `npm start`               | Inicia o servidor em produção               |
+| `npm test`                | Executa os testes                           |
+| `npm run test:watch`      | Executa testes em modo watch                |
+| `npm run test:coverage`   | Executa testes com relatório de cobertura   |
+| `npm run lint`            | Executa o ESLint                            |
+| `npm run lint:fix`        | Corrige erros do ESLint automaticamente     |
+| `npm run format`          | Formata o código com Prettier               |
+| `npm run format:check`    | Verifica formatação sem alterar             |
+| `npm run docker:up`       | Sobe os containers Docker                   |
+| `npm run docker:up:local` | Sobe API + MongoDB local (profile local-db) |
+| `npm run docker:down`     | Para os containers Docker                   |
 
 ### Rotas
 
