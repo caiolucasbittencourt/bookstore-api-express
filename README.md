@@ -4,10 +4,11 @@
 ![TypeScript](https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
-![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![Jest](https://img.shields.io/badge/jest-%23C21325.svg?style=for-the-badge&logo=jest&logoColor=white)
+![SWC](https://img.shields.io/badge/SWC-F8C457?style=for-the-badge)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
-API REST para gerenciamento de livros e autores, usando Node.js, TypeScript e Express.
+API REST com operações de CRUD para livros e autores e relacionamento entre essas entidades. Desenvolvido com foco em organização por camadas, validação de dados e tratamento centralizado de erros.
 
 ## Tecnologias
 
@@ -17,6 +18,7 @@ API REST para gerenciamento de livros e autores, usando Node.js, TypeScript e Ex
 - Mongoose
 - MongoDB
 - Jest
+- SWC
 - ESLint
 - Prettier
 - Docker
@@ -60,7 +62,7 @@ Defina a variável `DB_CONNECTION_STRING` com sua conexão do MongoDB.
 npm run dev
 ```
 
-Executa `src/server.ts` com watch nativo do Node.
+Executa `src/server.ts` com watch nativo do Node (`--watch`) e type stripping (`--experimental-strip-types`).
 
 ### Produção (local)
 
@@ -89,24 +91,24 @@ DB_CONNECTION_STRING=mongodb://mongo:27017/catalogo-de-livraria
 
 ## Scripts
 
-| Script                    | Descrição                                     |
-| ------------------------- | --------------------------------------------- |
-| `npm run dev`             | Executa `src/server.ts` em watch              |
-| `npm run build`           | Compila TypeScript para `dist/`               |
-| `npm start`               | Inicia API a partir de `dist/server.js`       |
-| `npm run typecheck`       | Verifica tipos com TypeScript sem gerar build |
-| `npm test`                | Executa testes                                |
-| `npm run test:watch`      | Executa testes em modo watch                  |
-| `npm run test:coverage`   | Executa testes com cobertura                  |
-| `npm run lint`            | Lint em `src/` e `tests/`                     |
-| `npm run lint:fix`        | Corrige problemas de lint automaticamente     |
-| `npm run format`          | Formata arquivos `.ts` de `src/` e `tests/`   |
-| `npm run format:check`    | Verifica formatação sem alterar arquivos      |
-| `npm run docker:up`       | Sobe API com Docker Compose                   |
-| `npm run docker:up:local` | Sobe API + Mongo local (profile `local-db`)   |
-| `npm run docker:down`     | Derruba containers                            |
-| `npm run docker:logs`     | Exibe logs da API                             |
-| `npm run docker:build`    | Rebuild da imagem da API                      |
+| Script                    | Descrição                                             |
+| ------------------------- | ----------------------------------------------------- |
+| `npm run dev`             | Executa `src/server.ts` em watch                      |
+| `npm run build`           | Compila TypeScript para `dist/`                       |
+| `npm start`               | Inicia API a partir de `dist/server.js`               |
+| `npm run typecheck`       | Verifica tipos com TypeScript sem gerar build         |
+| `npm test`                | Executa Jest via Node com `--experimental-vm-modules` |
+| `npm run test:watch`      | Executa testes em modo watch                          |
+| `npm run test:coverage`   | Executa testes com cobertura                          |
+| `npm run lint`            | Lint em `src/` e `tests/`                             |
+| `npm run lint:fix`        | Corrige problemas de lint automaticamente             |
+| `npm run format`          | Formata arquivos `.ts` de `src/` e `tests/`           |
+| `npm run format:check`    | Verifica formatação sem alterar arquivos              |
+| `npm run docker:up`       | Sobe API com Docker Compose                           |
+| `npm run docker:up:local` | Sobe API + Mongo local (profile `local-db`)           |
+| `npm run docker:down`     | Derruba containers                                    |
+| `npm run docker:logs`     | Exibe logs da API                                     |
+| `npm run docker:build`    | Rebuild da imagem da API                              |
 
 ## Estrutura
 
@@ -153,3 +155,7 @@ tests/
 | POST   | `/autores`     | Cadastra um novo autor      |
 | PUT    | `/autores/:id` | Atualiza um autor existente |
 | DELETE | `/autores/:id` | Remove um autor             |
+
+## Licença
+
+Distribuído sob a licença MIT. Consulte o arquivo `LICENSE`.

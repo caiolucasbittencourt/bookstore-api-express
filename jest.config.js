@@ -1,7 +1,21 @@
 export default {
   testEnvironment: 'node',
+  extensionsToTreatAsEsm: ['.ts'],
   transform: {
-    '^.+\\.[tj]s$': 'babel-jest',
+    '^.+\\.[tj]s$': [
+      '@swc/jest',
+      {
+        jsc: {
+          parser: {
+            syntax: 'typescript',
+          },
+          target: 'es2022',
+        },
+        module: {
+          type: 'es6',
+        },
+      },
+    ],
   },
   moduleFileExtensions: ['ts', 'js'],
   moduleNameMapper: {
