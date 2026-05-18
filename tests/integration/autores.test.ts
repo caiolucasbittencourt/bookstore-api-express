@@ -1,6 +1,7 @@
 import request from 'supertest';
 import app from '../app.js';
 import { autor } from '../../src/models/Autor.js';
+import type { AutorDocument } from '../../src/models/Autor.js';
 
 describe('Autores API', () => {
   describe('GET /autores', () => {
@@ -87,7 +88,9 @@ describe('Autores API', () => {
       expect(response.status).toBe(200);
       expect(response.body.message).toBe('Autor atualizado com sucesso');
 
-      const autorAtualizado = await autor.findById(novoAutor._id);
+      const autorAtualizado = (await autor.findById(
+        novoAutor._id,
+      )) as AutorDocument;
       expect(autorAtualizado.name).toBe('Nome Atualizado');
     });
 

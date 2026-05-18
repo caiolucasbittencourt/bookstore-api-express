@@ -1,10 +1,12 @@
 import request from 'supertest';
 import app from '../app.js';
 import { autor } from '../../src/models/Autor.js';
+import type { AutorDocument } from '../../src/models/Autor.js';
 import livro from '../../src/models/Livro.js';
+import type { LivroDocument } from '../../src/models/Livro.js';
 
 describe('Livros API', () => {
-  let autorCriado;
+  let autorCriado: AutorDocument;
 
   beforeEach(async () => {
     autorCriado = await autor.create({
@@ -103,7 +105,9 @@ describe('Livros API', () => {
       expect(response.status).toBe(200);
       expect(response.body.message).toBe('Livro atualizado com sucesso');
 
-      const livroAtualizado = await livro.findById(novoLivro._id);
+      const livroAtualizado = (await livro.findById(
+        novoLivro._id,
+      )) as LivroDocument;
       expect(livroAtualizado.title).toBe('Livro Atualizado');
     });
 

@@ -1,7 +1,17 @@
 import mongoose from "mongoose";
-import { autorSchema } from "./Autor.js";
+import { autorSchema, type IAutor } from "./Autor.js";
 
-const livroSchema = new mongoose.Schema(
+interface ILivro {
+  id?: mongoose.Types.ObjectId;
+  title: string;
+  price: number;
+  pages?: number;
+  author?: IAutor;
+}
+
+type LivroDocument = mongoose.HydratedDocument<ILivro>;
+
+const livroSchema: mongoose.Schema<ILivro> = new mongoose.Schema<ILivro>(
   {
     id: { type: mongoose.Schema.Types.ObjectId },
     title: { type: String, required: true },
@@ -12,6 +22,10 @@ const livroSchema = new mongoose.Schema(
   { versionKey: false },
 );
 
-const livro = mongoose.model("livros", livroSchema);
+const livro: mongoose.Model<ILivro> = mongoose.model<ILivro>(
+  "livros",
+  livroSchema,
+);
 
 export default livro;
+export type { ILivro, LivroDocument };
